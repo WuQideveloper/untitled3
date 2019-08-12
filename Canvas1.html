@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    //获取canvas元素
+    var canvas=document.getElementById ("canvas");
+    //获取canvas元素
+    var window_w=document.documentElement.clientWidth ;
+    var window_h=document.documentElement.clientHeight ;
+    canvas.width= window_w;
+    canvas.height= window_h;
+    var content=canvas.getContext("2d");
+
+    //画线条
+
+    /*1.设置线宽*/
+    content.lineWidth =1;
+    /*2.设置线条颜色*/
+    content.strokeStyle="red";
+    //3.画线的坐标
+    content.moveTo (0,0);      //起点坐标
+    content.lineTo (400,400);   //终点坐标
+    //4.执行划线
+    content.stroke();
+
+    //紧接着画另一条线
+    content.beginPath ();   //表示开始
+    content.lineWidth =5;
+    content.strokeStyle ="blue";  //设置线条颜色
+    content.fillStyle ="pink";    //设置填充颜色
+    content.moveTo (400,400);
+    content.lineTo (0,400);
+    content.lineTo (0,600);
+
+    //执行划线
+    content.stroke ();
+    //5.执行填充
+    content.fill();
+    content.closePath();
+
+    /*canvas.οnmοusemοve=function(e){
+        //划线到当前客户端的x与y座标
+        ctx.lineTo(e.clientX, e.clientY);
+        //执行画线
+        ctx.stroke();
+    }*/
+
+    //绘制矩形
+    content.fillStyle="red";
+    content.lineWidth=3;
+    content.strokeStyle="blue";
+    /*content.strokeRect(x,y,width,height)以x,y为左上角，绘制宽度为width,高度为height的矩形。*/
+    content.strokeRect(500,500,400,200);
+    content.fillRect(500,500,400,200);   /* 以x,y为左上角，填充宽度为width,高度为height的矩形。*/
+    content.fill();
+</script>
+</body>
+</html>
